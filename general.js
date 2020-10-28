@@ -1,32 +1,47 @@
 
-const canvasSize = 8;
-
-
+const canvasSize = 50; //number of cells per row and column
 const canvas = document.querySelector("#canvas");
 
 
+document.getElementById("gridSizeButton").addEventListener("click",function(){
+
+	//clear current canvas
+	deleteCanvas();
 
 
+	//add new canvas
+	createBlankCanvas();
 
 
-for (var i=0;i<canvasSize;i++){
+})
 
-	const row = document.createElement("div");
+function deleteCanvas(){
 
-	row.classList.add("row");
-	canvas.appendChild(row);
+	const cell = Array.from(document.querySelectorAll(".cell"));
 
+	cell.forEach(cell => cell.remove());
 
-	for(var j=0;j<canvasSize;j++){
+}
+
+function createBlankCanvas(){
+	for (var i=0;i<canvasSize*canvasSize;i++){
+
 		const cell = document.createElement("div");
-		const idNum = i*canvasSize+j;
+		const idNum = i;
 		cell.classList.add("cell");
+		cell.style.width = (400/canvasSize)-2 +"px";
+		cell.style.height = (400/canvasSize)-2 +"px";
 		cell.id = "id" + idNum.toString();
-		row.appendChild(cell);
-
+		canvas.appendChild(cell);
 	}
 
 }
+
+createBlankCanvas();
+
+
+
+
 
 var colour = "black";
 var red = 0;
