@@ -30,9 +30,12 @@ for (var i=0;i<canvasSize;i++){
 
 window.addEventListener("mouseover", function(e){
 	if(e.target.className != "cell") return;
-	console.log(e);
+	//console.log(e);
 
-	const cell = e.target.id;
+	const idNum = e.target.id;
+	const cell = document.querySelector("#"+idNum)
+	//console.log(cell+" test");
+	cell.classList.add("cellBlack");
 })
 
 
