@@ -77,6 +77,7 @@ document.getElementById("clearButton").addEventListener("click", function(){
 
 	const cell = Array.from(document.querySelectorAll(".cell"));
 	cell.forEach(cell => cell.style.backgroundColor = "white");
+	cell.forEach(cell => cell.style.opacity = 1);
 
 })
 
