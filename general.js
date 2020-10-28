@@ -1,48 +1,45 @@
 
-var canvasSize = 8; //number of cells per row and column
-const canvas = document.querySelector("#canvas");
+const canvas = document.querySelector("#canvas"); //select canvas
 
-var colour = "black";
+//css deafult colour values
 var red = 0;
 var green = 0;
 var blue = 0;
 var shade = 0;
+
+//button values
 var blackButton = true;
 var colourButton = false;
 var shadeButton = false;
 
 
-
 document.getElementById("gridSizeButton").addEventListener("click",function(){
-
-	//clear current canvas
-	deleteCanvas();
-
-
-	//add new canvas
-	createBlankCanvas();
-
-
+	
+	//delete old canvas and create a new one with the user defined dimensions
+	deleteCanvas(); //clear current canvas
+	createBlankCanvas(); //add new canvas
 })
 
 function deleteCanvas(){
 
+	//select all elements with class "cell" and remove. Allows for creation of new canvas in same place.
 	const cell = Array.from(document.querySelectorAll(".cell"));
-
 	cell.forEach(cell => cell.remove());
 
 }
 
 function createBlankCanvas(){
+	//function to create a new canvas, an n x n table of cells that can be coloured
 
-	canvasSize = document.getElementById("gridSize").value;
-	for (var i=0;i<canvasSize*canvasSize;i++){
+	
+	var canvasSize = document.getElementById("gridSize").value;//get user-defined grid size
+	for (var i=0;i<canvasSize*canvasSize;i++){//iterate n^2 times to create enough cells to fill the canvas. Assign attributes.
 
 		const cell = document.createElement("div");
 		const idNum = i;
 		cell.classList.add("cell");
-		cell.style.width = (400/canvasSize)-2 +"px";
-		cell.style.height = (400/canvasSize)-2 +"px";
+		cell.style.width = (400/canvasSize)-2 +"px"; //cell width and height should be a ratio of the canvas size and number of cells
+		cell.style.height = (400/canvasSize)-2 +"px";//these can be improved by taking sizes (width/height/border width) from css file
 		cell.id = "id" + idNum.toString();
 		canvas.appendChild(cell);
 	}
@@ -55,30 +52,37 @@ createBlankCanvas();
 
 
 
-
+//probably a better way of assigning these, using the value of the button or id
 document.getElementById("blackButton").addEventListener("click", function(){
+	//reassign buttons depending on which one was selected
 	blackButton = true;
 	colourButton = false;
 	shadeButton = false;
-
 })
 document.getElementById("colourButton").addEventListener("click", function(){
+	//reassign buttons depending on which one was selected
 	blackButton = false;
 	colourButton = true;
 	shadeButton = false;
-	
 })
 
 document.getElementById("shadeButton").addEventListener("click", function(){
+	//reassign buttons depending on which one was selected
 	blackButton = false;
 	colourButton = false;
-	shadeButton = true;
+	shadeButton = true;	
+})
 
-	
+document.getElementById("clearButton").addEventListener("click", function(){
+
+	const cell = Array.from(document.querySelectorAll(".cell"));
+	cell.forEach(cell => cell.style.backgroundColor = "white");
+
 })
 
 
-
+//when hovering over a cell, depending on which option has been selected 
+//the cell should be coloured either black, multicoloured or shaded(opacity)
 window.addEventListener("mouseover", function(e){
 	if(e.target.className != "cell") return;
 
@@ -114,13 +118,7 @@ function randomvalueRGB(){
 }
 
 
-document.getElementById("clearButton").addEventListener("click", function(){
 
-	const cell = Array.from(document.querySelectorAll(".cell"));
-
-	cell.forEach(cell => cell.style.backgroundColor = "white");
-
-})
 
 
 
