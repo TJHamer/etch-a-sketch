@@ -39,6 +39,17 @@ window.addEventListener("mouseover", function(e){
 })
 
 
+document.getElementById("clearButton").addEventListener("click", function(){
+	console.log(Array.from(document.querySelectorAll(".cell")));
+	const cell = Array.from(document.querySelectorAll(".cell"));
+
+	cell.forEach(cell => cell.classList.remove("cellBlack"));
+
+
+	
+})
+
+
 
 
 
