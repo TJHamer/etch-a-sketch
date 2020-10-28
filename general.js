@@ -1,6 +1,16 @@
 
-const canvasSize = 50; //number of cells per row and column
+var canvasSize = 8; //number of cells per row and column
 const canvas = document.querySelector("#canvas");
+
+var colour = "black";
+var red = 0;
+var green = 0;
+var blue = 0;
+var shade = 0;
+var blackButton = true;
+var colourButton = false;
+var shadeButton = false;
+
 
 
 document.getElementById("gridSizeButton").addEventListener("click",function(){
@@ -24,6 +34,8 @@ function deleteCanvas(){
 }
 
 function createBlankCanvas(){
+
+	canvasSize = document.getElementById("gridSize").value;
 	for (var i=0;i<canvasSize*canvasSize;i++){
 
 		const cell = document.createElement("div");
@@ -43,14 +55,6 @@ createBlankCanvas();
 
 
 
-var colour = "black";
-var red = 0;
-var green = 0;
-var blue = 0;
-var shade = 0;
-var blackButton = true;
-var colourButton = false;
-var shadeButton = false;
 
 document.getElementById("blackButton").addEventListener("click", function(){
 	blackButton = true;
