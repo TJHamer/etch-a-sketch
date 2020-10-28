@@ -32,19 +32,18 @@ var colour = "black";
 var red = 0;
 var green = 0;
 var blue = 0;
+var blackButton = true;
+var colourButton = false;
 
 document.getElementById("blackButton").addEventListener("click", function(){
-	colour = "black";
-	console.log(colour);
+	blackButton = true;
+	colourButton = false;
+
 })
 document.getElementById("colourButton").addEventListener("click", function(){
+	blackButton = false;
+	colourButton = true;
 	
-	red = 100;
-	green = 100;
-	blue = 100;
-
-	colour = rgb(red, green, blue);
-	console.log(colour);
 })
 
 
@@ -54,16 +53,26 @@ window.addEventListener("mouseover", function(e){
 
 	const idNum = e.target.id;
 	const cell = document.getElementById(idNum)
-	console.log(cell);
-	cell.style.backgroundColor = "black";
+
+	if(blackButton == true){
+		cell.style.backgroundColor = "black";
+	}else if(colourButton == true){
+		cell.style.backgroundColor = "red";
+		// red = 100;
+		// green = 100;
+		// blue = 100;
+
+		// colour = rgb(red, green, blue);
+		// console.log(colour);
+	}
+	
 })
 
 
 document.getElementById("clearButton").addEventListener("click", function(){
-	console.log(Array.from(document.querySelectorAll(".cell")));
+
 	const cell = Array.from(document.querySelectorAll(".cell"));
 
-	// cell.forEach(cell => cell.classList.remove("cellBlack"));
 	cell.forEach(cell => cell.style.backgroundColor = "white");
 
 })
