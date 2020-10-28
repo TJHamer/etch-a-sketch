@@ -8,13 +8,13 @@
 
 	background-color: black;
 	height: 400px;
-	width: 500px;
+	width: 400px;
 	margin:50px;
 
 }
 
 .cell{
-	background-color: red;
+	background-color: white;
 	height: 48px;
 	width: 50px;
 	margin:0px;
