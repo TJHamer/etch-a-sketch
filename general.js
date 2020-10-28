@@ -32,17 +32,29 @@ var colour = "black";
 var red = 0;
 var green = 0;
 var blue = 0;
+var shade = 0;
 var blackButton = true;
 var colourButton = false;
+var shadeButton = false;
 
 document.getElementById("blackButton").addEventListener("click", function(){
 	blackButton = true;
 	colourButton = false;
+	shadeButton = false;
 
 })
 document.getElementById("colourButton").addEventListener("click", function(){
 	blackButton = false;
 	colourButton = true;
+	shadeButton = false;
+	
+})
+
+document.getElementById("shadeButton").addEventListener("click", function(){
+	blackButton = false;
+	colourButton = false;
+	shadeButton = true;
+
 	
 })
 
@@ -55,18 +67,32 @@ window.addEventListener("mouseover", function(e){
 	const cell = document.getElementById(idNum)
 
 	if(blackButton == true){
-		cell.style.backgroundColor = "black";
+		cell.style.backgroundColor = "rgb(0,0,0)";
 	}else if(colourButton == true){
-		cell.style.backgroundColor = "red";
-		// red = 100;
-		// green = 100;
-		// blue = 100;
 
-		// colour = rgb(red, green, blue);
-		// console.log(colour);
+		red = randomvalueRGB();
+		green = randomvalueRGB();
+		blue = randomvalueRGB();
+
+		cell.style.backgroundColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+		cell.style.opacity = 1;
+	}else if(shadeButton == true){
+
+		shade = cell.style.opacity;
+		shade = (shade == "") ? 1 : shade;
+		console.log(shade);
+		console.log(parseFloat(shade)+0.2)
+		cell.style.opacity = parseFloat(shade)-0.1;
+		console.log(shade);
+
 	}
 	
 })
+
+function randomvalueRGB(){
+	//return random value between 0 and 255 for random RGB values
+	return(Math.floor(Math.random()*256));
+}
 
 
 document.getElementById("clearButton").addEventListener("click", function(){
