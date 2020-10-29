@@ -32,16 +32,18 @@ function createBlankCanvas(){
 	//function to create a new canvas, an n x n table of cells that can be coloured
 
 	
-	var canvasSize = document.getElementById("gridSize").value;//get user-defined grid size
+	var canvasSize = $("#gridSize").val();//get user-defined grid size  //original code: document.getElementById("gridSize").value
 	for (var i=0;i<canvasSize*canvasSize;i++){//iterate n^2 times to create enough cells to fill the canvas. Assign attributes.
 
-		const cell = document.createElement("div");
+		const cell = $("<div>") //original code: document.createElement("div");
 		const idNum = i;
-		cell.classList.add("cell");
-		cell.style.width = (400/canvasSize)-2 +"px"; //cell width and height should be a ratio of the canvas size and number of cells
-		cell.style.height = (400/canvasSize)-2 +"px";//these can be improved by taking sizes (width/height/border width) from css file
-		cell.id = "id" + idNum.toString();
-		canvas.appendChild(cell);
+		cell.addClass("cell") //original code: cell.classList.add("cell");
+			.width((400/canvasSize)-2 +"px")//original code: cell.style.width = (400/canvasSize)-2 +"px"; //cell width and height should be a ratio of the canvas size and number of cells
+			.height((400/canvasSize)-2 +"px")//original code: cell.style.height = (400/canvasSize)-2 +"px";//these can be improved by taking sizes (width/height/border width) from css file
+			.attr('id', "id" + idNum.toString());//original code: cell.id = "id" + idNum.toString();
+		
+		$("#canvas").append(cell);//canvas.appendChild(cell);
+
 	}
 
 }
