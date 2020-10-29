@@ -23,7 +23,7 @@ document.getElementById("gridSizeButton").addEventListener("click",function(){
 function deleteCanvas(){
 
 	//select all elements with class "cell" and remove. Allows for creation of new canvas in same place.
-	const cell = Array.from(document.querySelectorAll(".cell"));
+	const cell = Array.from($(".cell"));
 	cell.forEach(cell => cell.remove());
 
 }
@@ -35,7 +35,7 @@ function createBlankCanvas(){
 	var canvasSize = $("#gridSize").val();//get user-defined grid size  //original code: document.getElementById("gridSize").value
 	for (var i=0;i<canvasSize*canvasSize;i++){//iterate n^2 times to create enough cells to fill the canvas. Assign attributes.
 
-		const cell = $("<div>") //original code: document.createElement("div");
+		const cell = $("<div></div>") //original code: document.createElement("div");
 		const idNum = i;
 		cell.addClass("cell") //original code: cell.classList.add("cell");
 			.width((400/canvasSize)-2 +"px")//original code: cell.style.width = (400/canvasSize)-2 +"px"; //cell width and height should be a ratio of the canvas size and number of cells
