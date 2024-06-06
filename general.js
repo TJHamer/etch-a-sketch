@@ -58,12 +58,21 @@ $("#blackButton").on("click", function(){
 	blackButton = true;
 	colourButton = false;
 	shadeButton = false;
+	redButton = false;
+})
+$("#redButton").on("click", function(){
+	//reassign buttons depending on which one was selected
+	blackButton = false;
+	colourButton = false;
+	shadeButton = false;
+	redButton = true;
 })
 $("#colourButton").on("click", function(){
 	//reassign buttons depending on which one was selected
 	blackButton = false;
 	colourButton = true;
 	shadeButton = false;
+	redButton = false;
 })
 
 $("#shadeButton").on("click", function(){
@@ -71,6 +80,7 @@ $("#shadeButton").on("click", function(){
 	blackButton = false;
 	colourButton = false;
 	shadeButton = true;	
+	redButton = false;
 })
 
 $("#clearButton").on("click", function(){
@@ -93,6 +103,8 @@ $(window).on("mouseover", function(e){
 
 	if(blackButton == true){
 		cell.css({"background-color": "rgb(0,0,0)"});
+	}else if(redButton == true){
+		cell.css({"background-color": "rgb(255,0,0)"});
 	}else if(colourButton == true){
 
 		red = randomvalueRGB();
